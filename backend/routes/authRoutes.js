@@ -63,7 +63,9 @@ router.post("/login", async (req, res) => {
     res.cookie("fleetflow_token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      // The production frontend (Vercel) and API (Render) use different sites.
+      // SameSite=None is required for credentialed cross-site API requests.
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 8 * 60 * 60 * 1000,
     });
 
@@ -275,7 +277,7 @@ router.post("/logout", (req, res) => {
   res.clearCookie("fleetflow_token", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
   });
 
   res.json({ message: "Logged out" });
