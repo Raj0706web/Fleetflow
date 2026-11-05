@@ -1,0 +1,196 @@
+
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  color: #172554;
+  background: #f8fafc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.auth-orbit {
+  will-change: transform, opacity;
+}
+
+.auth-orbit-ring-top {
+  animation: auth-orbit-drift 17s ease-in-out infinite;
+}
+
+.auth-orbit-glow-top {
+  animation: auth-orbit-glow 11s ease-in-out infinite;
+}
+
+.auth-orbit-ring-bottom {
+  animation: auth-orbit-drift 21s ease-in-out -8s infinite reverse;
+}
+
+.auth-orbit-glow-bottom {
+  animation: auth-orbit-glow 13s ease-in-out -5s infinite reverse;
+}
+
+@keyframes auth-orbit-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(13px, 17px, 0) scale(1.035); }
+}
+
+@keyframes auth-orbit-glow {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(.96); opacity: .65; }
+  50% { transform: translate3d(10px, 12px, 0) scale(1.08); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-orbit {
+    animation: none;
+  }
+}
+
+.brand-reveal {
+  background:
+    radial-gradient(ellipse at 50% 46%, rgb(255 255 255 / 96%) 0%, rgb(249 251 255 / 98%) 48%, #f1f5fb 100%);
+}
+
+.brand-reveal-content,
+.brand-reveal-video-wrap {
+  animation: none;
+}
+
+.brand-reveal-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: multiply;
+  object-fit: cover;
+}
+
+@media (max-aspect-ratio: 1 / 1) {
+  .brand-reveal-video {
+    object-fit: contain;
+  }
+}
+
+.brand-reveal-signature {
+  animation: brand-wordmark-arrive .72s cubic-bezier(.2,.8,.2,1) .35s both;
+}
+
+.brand-reveal-glow {
+  position: absolute;
+  width: min(56vw, 38rem);
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.brand-reveal-glow-top {
+  top: -24rem;
+  left: -18rem;
+  background: radial-gradient(circle, rgb(37 99 235 / 9%), rgb(37 99 235 / 0%) 70%);
+}
+
+.brand-reveal-glow-bottom {
+  right: -20rem;
+  bottom: -27rem;
+  background: radial-gradient(circle, rgb(6 182 212 / 8%), rgb(6 182 212 / 0%) 70%);
+}
+
+.brand-reveal-truck {
+  animation: brand-truck-arrive 1s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.brand-reveal-wordmark {
+  animation: brand-wordmark-arrive .72s cubic-bezier(.2,.8,.2,1) .35s both;
+}
+
+.brand-reveal-route-line {
+  stroke-dasharray: 252;
+  stroke-dashoffset: 252;
+  animation: brand-route-draw 1.15s cubic-bezier(.35,0,.2,1) .45s both;
+}
+
+.brand-reveal-caption {
+  animation: brand-wordmark-arrive .65s ease .82s both;
+}
+
+.brand-reveal-ellipsis {
+  display: inline-block;
+  width: 1.2em;
+  overflow: hidden;
+  vertical-align: bottom;
+  animation: brand-ellipsis 1.15s steps(4, end) infinite;
+}
+
+.brand-reveal-corner {
+  position: absolute;
+  width: 1px;
+  height: 4.5rem;
+  background: linear-gradient(transparent, rgb(148 163 184 / 28%), transparent);
+  pointer-events: none;
+}
+
+.brand-reveal-corner-top {
+  top: 12%;
+  right: 12%;
+  transform: rotate(38deg);
+}
+
+.brand-reveal-corner-bottom {
+  bottom: 12%;
+  left: 12%;
+  transform: rotate(38deg);
+}
+
+@keyframes brand-truck-arrive {
+  from { opacity: 0; transform: translateX(-18px) scale(.94); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes brand-wordmark-arrive {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes brand-route-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes brand-ellipsis {
+  from { width: 0; }
+  to { width: 1.2em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-reveal-signature,
+  .brand-reveal-truck,
+  .brand-reveal-wordmark,
+  .brand-reveal-route-line,
+  .brand-reveal-caption,
+  .brand-reveal-ellipsis {
+    animation-duration: .01ms;
+    animation-delay: 0ms;
+    animation-iteration-count: 1;
+  }
+}

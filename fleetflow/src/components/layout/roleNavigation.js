@@ -1,0 +1,53 @@
+import {
+  Activity,
+  BarChart3,
+  Boxes,
+  ClipboardList,
+  FileClock,
+  Fuel,
+  LayoutDashboard,
+  MapPinned,
+  Navigation,
+  Package,
+  Route,
+  Settings,
+  ShieldCheck,
+  Truck,
+  UserRound,
+  Users,
+  Wrench,
+} from "lucide-react";
+
+export const roleNavigation = {
+  Administrator: [
+    { label: "Admin Overview", path: "/admin", icon: ShieldCheck },
+    { label: "Users & Roles", path: "/admin/users", icon: Users },
+    { label: "Fleet Overview", path: "/admin/fleet", icon: LayoutDashboard },
+    { label: "Reports", path: "/admin/reports", icon: BarChart3 },
+    { label: "System Settings", path: "/admin/settings", icon: Settings },
+  ],
+  "Fleet / Operations Manager": [
+    { label: "Operations Dashboard", path: "/dashboard", icon: LayoutDashboard },
+    { label: "Live Tracking", path: "/tracking", icon: MapPinned },
+    { label: "Routes & Planning", path: "/routes", icon: Navigation },
+    { label: "Deliveries", path: "/deliveries", icon: Package },
+    { label: "Trips & Assignments", path: "/trips", icon: Route },
+    { label: "Vehicles", path: "/vehicles", icon: Truck },
+    { label: "Fuel Logs", path: "/fuel-logs", icon: Fuel },
+    { label: "Maintenance", path: "/maintenance", icon: Wrench },
+    { label: "Truck Load Optimization", path: "/load-optimization", icon: Boxes },
+    { label: "Drivers", path: "/drivers", icon: Users },
+    { label: "Reports", path: "/reports", icon: BarChart3 },
+    { label: "Settings", path: "/settings", icon: Settings },
+  ],
+  Driver: [
+    { label: "My Assigned Trips", path: "/driver", icon: Route },
+    { label: "Trip History", path: "/driver/history", icon: FileClock },
+    { label: "My Profile", path: "/driver/profile", icon: UserRound },
+  ],
+  "Viewer / Client": [
+    { label: "My Deliveries", path: "/client", icon: ClipboardList },
+    { label: "Track a Delivery", path: "/client/track", icon: Activity },
+    { label: "My Account", path: "/client/account", icon: UserRound },
+  ],
+};
